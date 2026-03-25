@@ -11,10 +11,9 @@ public abstract class Acces implements InAcces {
     /**
      * Constructor per defecte de la classe.,
      * @param nom
-     * @param accesibilitat
      * @param estat
      */
-    Acces(String nom, boolean accesibilitat, boolean estat) {
+    Acces(String nom, boolean estat) {
         this.nom = nom;
         this.estat = estat;
     }
