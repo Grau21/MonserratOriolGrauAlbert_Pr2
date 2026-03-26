@@ -7,8 +7,6 @@ public class Glamping extends Casa {
 
     private String material;
     private boolean casaMascota;
-    private boolean estat;
-    private int illuminacio;
 
     // Constructors
     //---------------
@@ -27,11 +25,9 @@ public class Glamping extends Casa {
      */
     public Glamping(String nom, String id, String mida, boolean estat, int illuminacio,
                     int habitacions, int placesPersones, String material, boolean casaMascota) {
-        super(nom, id, mida, habitacions, placesPersones); // Heretem de casa amb el super.
+        super(nom, id, estat, illuminacio, mida, habitacions, placesPersones); // Heretem de casa amb el super.
         this.material = material;
         this.casaMascota = casaMascota;
-        this.estat = estat;
-        this.illuminacio = illuminacio;
     }
 
     // Getters i Setters.
@@ -62,32 +58,6 @@ public class Glamping extends Casa {
      * @param casaMascota
      */
     public void setCasaMascota(boolean casaMascota) { this.casaMascota = casaMascota; }
-
-    /**
-     * Retorna si el Glamping està operatiu (true) o no (false).
-     * @return
-     */
-    public boolean isEstat() { return estat; }
-
-    /**
-     * Destermina l'estat del Glamping.
-     *
-     * @param estat
-     */
-    public void setEstat(boolean estat) { this.estat = estat; }
-
-    /**
-     * Retorna la il·luminació del Glamping.
-     * @return
-     */
-    public int getIlluminacio() { return illuminacio; }
-
-    /**
-     * Canvia la il·luminació del Glamping.
-     *
-     * @param illuminacio
-     */
-    public void setIlluminacio(int illuminacio) { this.illuminacio = illuminacio; }
 
     // Mètodes
     //---------
