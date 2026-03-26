@@ -57,4 +57,6 @@ public abstract class Acces implements InAcces {
      * @return
      */
     public LlistaAllotjaments getAAllotjaments() { return acces; }
+
+    // Hem d'afegir el mètode "public abstract String toString()" que retorni la info dels atributs
 }
