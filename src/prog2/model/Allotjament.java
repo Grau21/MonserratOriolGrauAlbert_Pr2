@@ -1,23 +1,30 @@
 package prog2.model;
 
 public abstract class Allotjament implements InAllotjament {
+
+    // Atributs
+    //------------
+
     private String nom;
     private String id;
+    private boolean estat;
+    private int illuminacio;
     private long estadaMinimaALTA_;
     private long estadaMinimaBAIXA_;
 
-    public Allotjament(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
+    // Constructors
+    //---------------
+
+    public Allotjament(String nom, String id, boolean estat, int illuminacio,
+                       long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
         this.nom = nom;
         this.id = id;
+        this.estat = estat;
+        this.illuminacio = illuminacio;
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
     }
 
-    /*  Aquest constructor no usa estadaMinimaALTA_ ni estadaMinimaBAIXA_. */
-    public Allotjament(String nom, String id) {
-        this.nom = nom;
-        this.id = id;
-    }
 // Getters i Setters.
     @Override
     public String getNom() { return nom; }
@@ -30,6 +37,32 @@ public abstract class Allotjament implements InAllotjament {
 
     @Override
     public void setId(String id) { this.id = id; }
+
+    /**
+     * Retorna si el Glamping està operatiu (true) o no (false).
+     * @return
+     */
+    public boolean isEstat() { return estat; }
+
+    /**
+     * Destermina l'estat del Glamping.
+     *
+     * @param estat
+     */
+    public void setEstat(boolean estat) { this.estat = estat; }
+
+    /**
+     * Retorna la il·luminació del Glamping.
+     * @return
+     */
+    public int getIlluminacio() { return illuminacio; }
+
+    /**
+     * Canvia la il·luminació del Glamping.
+     *
+     * @param illuminacio
+     */
+    public void setIlluminacio(int illuminacio) { this.illuminacio = illuminacio; }
 
     @Override
     public long getEstadaMinima(Temp temp) {

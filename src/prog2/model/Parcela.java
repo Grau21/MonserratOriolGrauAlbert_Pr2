@@ -4,8 +4,9 @@ public class Parcela extends Allotjament {
     private float mida;
     private boolean connexioElectrica;
 
-    public Parcela(String nom, String id, float mida, boolean connexioElectrica) {
-        super(nom, id, 4, 2); // Heretem d'allotjament amb el super.
+    public Parcela(String nom, String id, boolean estat, int illuminacio, float mida,
+                   boolean connexioElectrica) {
+        super(nom, id, estat, illuminacio, 4, 2); // Heretem d'allotjament amb el super.
         this.mida = mida;
         this.connexioElectrica = connexioElectrica;
     }
@@ -22,6 +23,7 @@ public class Parcela extends Allotjament {
 // Que té Parcela.
     @Override
     public String toString() {
-        return super.toString() + " Parcela{mida=" + mida + ", connexioElectrica=" + connexioElectrica + "}";
+        return super.toString() + " Parcela{mida=" + mida +
+                ", connexioElectrica=" + connexioElectrica + "}";
     }
 }

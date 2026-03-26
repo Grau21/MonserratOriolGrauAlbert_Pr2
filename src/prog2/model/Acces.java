@@ -9,7 +9,7 @@ public abstract class Acces implements InAcces {
     private LlistaAllotjaments acces;
 
     /**
-     * Constructor per defecte de la classe.,
+     * Constructor per defecte de la classe.
      * @param nom
      * @param estat
      */
@@ -59,4 +59,6 @@ public abstract class Acces implements InAcces {
     public LlistaAllotjaments getAAllotjaments() { return acces; }
 
     // Hem d'afegir el mètode "public abstract String toString()" que retorni la info dels atributs
+
+    // Podem afegir el mètode "public abstract isAccessibilitat()" per millor llegibilitat
 }
