@@ -23,9 +23,13 @@ public class Glamping extends Casa {
      * @param material
      * @param casaMascota
      */
-    public Glamping(String nom, String id, String mida, boolean estat, int illuminacio,
-                    int habitacions, int placesPersones, String material, boolean casaMascota) {
-        super(nom, id, estat, illuminacio, mida, habitacions, placesPersones); // Heretem de casa amb el super.
+    public Glamping(String nom, String id, boolean estat, int illuminacio,
+                    String mida, int habitacions, int placesPersones,
+                    String material, boolean casaMascota) {
+        super(
+                nom, id, estat, illuminacio, mida,
+                habitacions, placesPersones, 3, 5
+        );
         this.material = material;
         this.casaMascota = casaMascota;
     }
@@ -78,7 +82,6 @@ public class Glamping extends Casa {
     @Override
     public String toString() {
         return super.toString() + " Glamping{material=" + material +
-               ", casaMascota=" + casaMascota + ",  estat=" + estat +
-               ", illuminacio=" + illuminacio + '}';
+               ", casaMascota=" + casaMascota + '}';
     }
 }
