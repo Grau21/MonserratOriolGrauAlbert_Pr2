@@ -40,9 +40,6 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
         llista.remove(tasca);
         // Restaurar allotjament
         tasca.getAllotjament().obrirAllotjament();
-
-        /*tasca.getAllotjament().setEstat(true);
-        tasca.getAllotjament().setIlluminacio(100);*/
     }
 
     @Override
