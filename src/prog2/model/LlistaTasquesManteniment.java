@@ -38,9 +38,11 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
     public void completarTascaManteniment(TascaManteniment tasca) throws ExcepcioCamping {
         if (!llista.contains(tasca)) throw new ExcepcioCamping("La tasca no existeix a la llista");
         llista.remove(tasca);
-        // Restaurar allotjament: operatiu i il·luminació al 100%
-        tasca.getAllotjament().setEstat(true);
-        tasca.getAllotjament().setIlluminacio(100);
+        // Restaurar allotjament
+        tasca.getAllotjament().obrirAllotjament();
+
+        /*tasca.getAllotjament().setEstat(true);
+        tasca.getAllotjament().setIlluminacio(100);*/
     }
 
     @Override
