@@ -118,11 +118,11 @@ public class TascaManteniment implements InTascaManteniment{
         switch (tipus) {
             case Reparacio:
             case RevisioTecnica:
-                return "Iluminacio= 50%";
+                return "50%";
             case Neteja:
-                return "Iluminacio= 100%";
+                return "100%";
             case Desinfeccio:
-                return "Iluminacio= 0%";
+                return "0%";
         }
 
         // Si no s'ha retornart correctament returnem ERROR
