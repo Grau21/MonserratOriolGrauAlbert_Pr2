@@ -35,6 +35,14 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaALTA = estadaMinimaALTA;
     }
 
+    // Mètodes
+    //---------
+
+    public void obrirAllotjament() {
+        estat = true;
+        illuminacio = 100;
+    }
+
     @Override
     public boolean correcteFuncionament() {
         return estat;
