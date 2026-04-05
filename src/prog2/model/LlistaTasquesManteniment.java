@@ -27,11 +27,8 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
         }
         TascaManteniment tasca = new TascaManteniment(num, allotjament, data, tipusEnum, dies);
         llista.add(tasca);
-        // Actualitzar estat de l'allotjament: no operatiu i canviar il·luminació segons tasca
-        allotjament.setEstat(false);
-        String illumStr = tasca.getIluminacioAllotjament(); // ex: "50%"
-        int percent = Integer.parseInt(illumStr.replace("%", ""));
-        allotjament.setIlluminacio(percent);
+        // Actualitzar estat de l'allotjament
+        allotjament.setIlluminacio(tasca.getIluminacioAllotjament());
     }
 
     @Override
