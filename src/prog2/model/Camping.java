@@ -107,19 +107,32 @@ public class Camping implements InCamping {
     /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     @Override
+    public int calculAllotjamentsOperatius() {
+        int i = 0;
+        for (Allotjament allotjament : llistaAllotjaments) {
+            if (allotjament.isOperatiu()) {
+                i+;
+            }
+        }
+        return i;
+    }
+
+    @Override
     public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
 
-        int estadaMesCurta = Integer.MAX_VALUE;
-        int estadaActual;
+        long estadaMesCurta = Long.MAX_VALUE;
+        long estadaActual;
+        Allotjament allotjamentMillor = null;
+
         for (Allotjament allotjament : llistaAllotjaments) {
             estadaActual = allotjament.getEstadaMinima(temp);
             if (estadaMesCurta > estadaActual) {
                 estadaActual = estadaMesCurta;
+                allotjamentMillor = allotjament;
             }
         }
 
-        // Si retorna Integer.MAX_VALUE, llavors la llita és buida
-        return estadaMesCurta;
+        return allotjamentMillor;
     }
 
     public void afegirTascaManteniment(int num, String tipus, String idAllotjament, String data, int dies) throws ExcepcioCamping {
