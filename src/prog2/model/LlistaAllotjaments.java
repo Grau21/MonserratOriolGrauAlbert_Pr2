@@ -10,6 +10,16 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         llista = new ArrayList<>();
     }
 
+    public int size() {
+        return llista.size();
+    }
+
+    public void add(Allotjament allotjament) {
+        llista.add(allotjament);
+    }
+
+    public ArrayList<Allotjament> getLlistaAllotjaments() { return llista; }
+
     @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
         if (allotjament == null) throw new ExcepcioCamping("Allotjament nul");

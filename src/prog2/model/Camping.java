@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Camping implements InCamping {
     private String nom;
-    private ArrayList<Allotjament> llistaAllotjaments;
+    private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
     private LlistaTasquesManteniment llistaTasquesManteniment;
     private LlistaReserves llistaReserves;
@@ -17,7 +17,7 @@ public class Camping implements InCamping {
 
     public Camping(String nom) {
         this.nom = nom;
-        this.llistaAllotjaments =  new ArrayList<>();
+        this.llistaAllotjaments =  new LlistaAllotjaments();
         this.llistaAccessos = new LlistaAccessos();
         this.llistaTasquesManteniment = new LlistaTasquesManteniment();
         this.llistaReserves = new LlistaReserves();
@@ -32,7 +32,7 @@ public class Camping implements InCamping {
         return llistaReserves;
     }
     @Override
-    public ArrayList<Allotjament> getLlistaAllotjaments() { return llistaAllotjaments; }
+    public ArrayList<Allotjament> getLlistaAllotjaments() { return llistaAllotjaments.getLlistaAllotjaments(); }
     @Override
     public ArrayList<Client> getLlistaClients() { return llistaClients; }
     @Override
@@ -108,10 +108,12 @@ public class Camping implements InCamping {
 
     @Override
     public int calculAllotjamentsOperatius() {
+        ArrayList<Allotjament> llista = llistaAllotjaments.getLlistaAllotjaments();
+
         int i = 0;
-        for (Allotjament allotjament : llistaAllotjaments) {
+        for (Allotjament allotjament : llista) {
             if (allotjament.isOperatiu()) {
-                i+;
+                i++;
             }
         }
         return i;
@@ -119,12 +121,13 @@ public class Camping implements InCamping {
 
     @Override
     public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
+        ArrayList<Allotjament> llista = llistaAllotjaments.getLlistaAllotjaments();
 
         long estadaMesCurta = Long.MAX_VALUE;
         long estadaActual;
         Allotjament allotjamentMillor = null;
 
-        for (Allotjament allotjament : llistaAllotjaments) {
+        for (Allotjament allotjament : llista) {
             estadaActual = allotjament.getEstadaMinima(temp);
             if (estadaMesCurta > estadaActual) {
                 estadaActual = estadaMesCurta;
