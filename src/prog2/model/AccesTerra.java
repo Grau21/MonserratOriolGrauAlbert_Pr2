@@ -3,29 +3,15 @@ package prog2.model;
 public abstract class AccesTerra extends Acces {
     private double longitud;
 
-    /**
-     * Constructor per defecte de la classe.,
-     *
-     * @param nom
-     * @param estat
-     * @param longitud
-     */
-    AccesTerra(String nom, boolean estat, double longitud) {
+    public AccesTerra(String nom, boolean estat, double longitud) {
         super(nom, estat);
         this.longitud = longitud;
     }
+    public double getLongitud() { return longitud; }
+    public void setLongitud(double longitud) { this.longitud = longitud; }
 
-    /**
-     * Retorna els la longitud de l'accés.
-     * @return
-     */
-    double getlongitud() { return longitud; }
-
-    /**
-     * Canvia els la longitud de l'accés.
-     * @param longitud
-     */
-    void setlongitud(double longitud) {
-        this.longitud = longitud;
+    @Override
+    public String toString() {
+        return super.toString() + ", longitud=" + longitud + " m";
     }
 }
