@@ -1,20 +1,27 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
+import prog2.vista.ExcepcioReserva;
+
 import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Camping implements InCamping {
     private String nom;
-    private LlistaAllotjaments llistaAllotjaments;
+    private ArrayList<Allotjament> llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
     private LlistaTasquesManteniment llistaTasquesManteniment;
     private LlistaReserves llistaReserves;
+    private ArrayList<Client> llistaClients;
 
     public Camping(String nom) {
         this.nom = nom;
-        this.llistaAllotjaments = new LlistaAllotjaments();
+        this.llistaAllotjaments =  new ArrayList<>();
         this.llistaAccessos = new LlistaAccessos();
         this.llistaTasquesManteniment = new LlistaTasquesManteniment();
+        this.llistaReserves = new LlistaReserves();
+        this.llistaClients = new ArrayList<>();
     }
 
     // Getters
@@ -25,11 +32,78 @@ public class Camping implements InCamping {
         return llistaReserves;
     }
     @Override
-    public LlistaAllotjaments getLlistaAllotjaments() { return llistaAllotjaments; }
+    public ArrayList<Allotjament> getLlistaAllotjaments() { return llistaAllotjaments; }
+    @Override
+    public ArrayList<Client> getLlistaClients() { return llistaClients; }
+    @Override
+    public int getNumAllotjaments() { return llistaAllotjaments.size(); }
+    @Override
+    public int getNumReserves() { return llistaReserves.getNumReserves(); }
+    @Override
+    public int getNumClients() { return llistaClients.size(); }
     public LlistaAccessos getLlistaAccessos() { return llistaAccessos; }
     public LlistaTasquesManteniment getLlistaTasquesManteniment() { return llistaTasquesManteniment; }
 
-    // Mètodes per afegir tasques i completar-les (amb actualització d'accessos)
+    // Mètodes
+    @Override
+    public void afegirClient(String nom_, String dni_) {
+        Client client = new Client(nom_,dni_);
+        llistaClients.add(client);
+    }
+
+    @Override
+    public void afegirParcela(String nom_, String idAllotjament_, float metres, boolean connexioElectrica) {
+        Allotjament parcela = new Parcela(nom_,idAllotjament_, true, "100%", metres, connexioElectrica);
+        llistaAllotjaments.add(parcela);
+    }
+
+    @Override
+    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+                               int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
+        Allotjament bungalow = new Bungalow(
+                nom_, idAllotjament_, true, "100%", mida, habitacions,
+                placesPersones, placesParquing, terrassa, tv, aireFred
+        );
+        llistaAllotjaments.add(bungalow);
+    }
+
+    @Override
+    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+                                      int placesParquing, boolean terrassa, boolean tv, boolean aireFred,
+                                      boolean serveisExtra, String codiWifi) {
+        Allotjament bungalowPremium = new BungalowPremium(
+                nom_, idAllotjament_, true, "100%", mida, habitacions,
+                placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra,
+                codiWifi
+        );
+        llistaAllotjaments.add(bungalowPremium);
+    }
+
+    @Override
+    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+                               String material, boolean casaMascota) {
+        Allotjament glamping = new Glamping(
+                nom_, idAllotjament_, true, "100%", mida, habitacions,
+                placesPersones, material, casaMascota
+        );
+        llistaAllotjaments.add(glamping);
+    }
+
+    @Override
+    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones,
+                                boolean terrassaBarbacoa) {
+        Allotjament mobileHome = new MobilHome(
+                nom_, idAllotjament_, true, "100%", mida, habitacions,
+                placesPersones, terrassaBarbacoa
+        );
+        llistaAllotjaments.add(mobileHome);
+    }
+
+    @Override
+    public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        llistaReserves.afegirReserva(id_, dni_, dataEntrada, dataSortida);
+    }
+
     public void afegirTascaManteniment(int num, String tipus, String idAllotjament, String data, int dies) throws ExcepcioCamping {
         Allotjament a = llistaAllotjaments.getAllotjament(idAllotjament);
         llistaTasquesManteniment.afegirTascaManteniment(num, tipus, a, data, dies);
