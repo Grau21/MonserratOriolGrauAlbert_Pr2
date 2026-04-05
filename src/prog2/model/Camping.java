@@ -99,9 +99,27 @@ public class Camping implements InCamping {
         llistaAllotjaments.add(mobileHome);
     }
 
+    /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         llistaReserves.afegirReserva(id_, dni_, dataEntrada, dataSortida);
+    }
+    /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    @Override
+    public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
+
+        int estadaMesCurta = Integer.MAX_VALUE;
+        int estadaActual;
+        for (Allotjament allotjament : llistaAllotjaments) {
+            estadaActual = allotjament.getEstadaMinima(temp);
+            if (estadaMesCurta > estadaActual) {
+                estadaActual = estadaMesCurta;
+            }
+        }
+
+        // Si retorna Integer.MAX_VALUE, llavors la llita és buida
+        return estadaMesCurta;
     }
 
     public void afegirTascaManteniment(int num, String tipus, String idAllotjament, String data, int dies) throws ExcepcioCamping {
