@@ -30,19 +30,9 @@ public class GestorCamping {
         // >> El número total d'allotjaments del Càmping és X dels quals X allotjaments estan operatius.
         //--------------------------------------------------------------------------------------------------
 
-        int numAllotjaments = 0;
-        int numAllotjamentsOperatius = 0;
-        ArrayList<Allotjament>  allotjamentsList = campingMar.getLlistaAllotjaments();
-        Iterator<Allotjament> it = allotjamentsList.iterator();
+        int numAllotjaments = campingMar.getLlistaAllotjaments().size();
+        int numAllotjamentsOperatius = campingMar.calculAllotjamentsOperatius();
 
-        // Iterem sobre la llista i comprovem quin està operatiu.
-        while(it.hasNext()){
-            Allotjament a = it.next();
-            numAllotjaments++;
-            if(a.correcteFuncionament()){
-                numAllotjamentsOperatius++;
-            }
-        }
         System.out.println(">> El número total d'allotjaments del Càmping és " + numAllotjaments + " dels quals " +
                            numAllotjamentsOperatius + " allotjaments estan operatius.");
 

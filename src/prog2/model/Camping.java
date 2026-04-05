@@ -32,7 +32,7 @@ public class Camping implements InCamping {
         return llistaReserves;
     }
     @Override
-    public ArrayList<Allotjament> getLlistaAllotjaments() { return llistaAllotjaments.getLlistaAllotjaments(); }
+    public LlistaAllotjaments getLlistaAllotjaments() { return llistaAllotjaments; }
     @Override
     public ArrayList<Client> getLlistaClients() { return llistaClients; }
     @Override
@@ -102,7 +102,9 @@ public class Camping implements InCamping {
     /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        llistaReserves.afegirReserva(id_, dni_, dataEntrada, dataSortida);
+        Allotjament allotjament = buscarAllotjament(id_);
+        Client client = buscarClient(dni_);
+        llistaReserves.afegirReserva(allotjament, client, dataEntrada, dataSortida);
     }
     /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -197,8 +199,7 @@ public class Camping implements InCamping {
         llistaAccessos.afegirAcces(Acc11);
         Acces Acc12 = new CarreteraTerra("A12", true, 800, 5);
         llistaAccessos.afegirAcces(Acc12);
-    }
-    catch (ExcepcioCamping e) { System.err.println(e.getMessage()); }
+
 
     // Allotjaments (amb String per mida)
     Allotjament ALL1 = new Parcela("Parcel·la Nord", "ALL1", true, "100%", 64.0f, true);
@@ -233,5 +234,7 @@ public class Camping implements InCamping {
     Acc10.afegirAllotjament(ALL2);
     Acc11.afegirAllotjament(ALL6);
     Acc12.afegirAllotjament(ALL6);
+    }
+    catch (ExcepcioCamping e) { System.err.println(e.getMessage()); }
     }
 }

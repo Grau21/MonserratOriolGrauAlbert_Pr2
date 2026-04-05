@@ -13,8 +13,12 @@ public abstract class Acces implements InAcces {
         this.allotjaments = new LlistaAllotjaments();  // inicialització important
     }
 
-    public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
-        allotjaments.afegirAllotjament(allotjament);
+    @Override
+    public void afegirAllotjament(Allotjament allotjament) {
+        try {allotjaments.afegirAllotjament(allotjament);}
+        catch (ExcepcioCamping e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     public void tancarAcces() { estat = false; }

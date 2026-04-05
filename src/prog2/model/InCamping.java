@@ -29,7 +29,7 @@ public interface InCamping {
     /**
      * Retorna la llista d'allotjaments del camping.
      */
-    ArrayList<Allotjament> getLlistaAllotjaments();
+    LlistaAllotjaments getLlistaAllotjaments();
 
     /**
      * Retorna la llista de clients del camping.
