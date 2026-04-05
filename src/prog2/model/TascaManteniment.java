@@ -22,8 +22,9 @@ public class TascaManteniment implements InTascaManteniment{
      * @param tipus
      * @param dies
      */
-    TascaManteniment(int num, Allotjament allotjament, String data,
-                     TipusTascaManteniment tipus, int dies){
+    TascaManteniment(int num, TipusTascaManteniment tipus,
+                     Allotjament allotjament, String data,
+                     int dies){
         this.num = num;
         this.allotjament = allotjament;
         this.data = data;

@@ -25,7 +25,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment {
         } catch (IllegalArgumentException e) {
             throw new ExcepcioCamping("Tipus de tasca no vàlid: " + tipus);
         }
-        TascaManteniment tasca = new TascaManteniment(num, allotjament, data, tipusEnum, dies);
+        TascaManteniment tasca = new TascaManteniment(num, tipusEnum, allotjament, data, dies);
         llista.add(tasca);
         // Actualitzar estat de l'allotjament
         allotjament.setIlluminacio(tasca.getIluminacioAllotjament());
