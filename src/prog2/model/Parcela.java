@@ -4,7 +4,7 @@ public class Parcela extends Allotjament {
     private float mida;
     private boolean connexioElectrica;
 
-    public Parcela(String nom, String id, boolean estat, int illuminacio,
+    public Parcela(String nom, String id, boolean estat, String illuminacio,
                    float mida, boolean connexioElectrica) {
         super(nom, id, estat, illuminacio, 4, 2);  // estada mínima: 4 dies baixa, 2 alta?
         this.mida = mida;

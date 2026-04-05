@@ -27,7 +27,7 @@ public class Bungalow extends Casa {
      * @param televisio
      * @param aireFred
      */
-    public Bungalow(String nom, String id, boolean estat, int illuminacio,
+    public Bungalow(String nom, String id, boolean estat, String illuminacio,
                     String mida, int habitacions, int placesPersones,
                     int placesParquing, boolean terrassa, boolean televisio,
                     boolean aireFred) {

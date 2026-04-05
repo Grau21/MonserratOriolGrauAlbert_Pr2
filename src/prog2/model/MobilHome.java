@@ -21,7 +21,7 @@ public class MobilHome extends Casa {
      * @param placesPersones
      * @param terrassaBarbacoa
      */
-    public MobilHome(String nom, String id,  boolean estat, int illuminacio,
+    public MobilHome(String nom, String id,  boolean estat, String illuminacio,
                      String mida, int habitacions, int placesPersones,
                      boolean terrassaBarbacoa) {
         super(

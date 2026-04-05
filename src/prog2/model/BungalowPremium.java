@@ -27,7 +27,7 @@ public class BungalowPremium extends Bungalow {
      * @param serveisExtra
      * @param codiWifi
      */
-    public BungalowPremium(String nom, String id, boolean estat, int illuminacio,
+    public BungalowPremium(String nom, String id, boolean estat, String illuminacio,
                            String mida, int habitacions, int placesPersones,
                            int placesParquing, boolean terrassa, boolean televisio,
                            boolean aireFred, boolean serveisExtra, String codiWifi) {

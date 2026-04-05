@@ -4,11 +4,11 @@ public abstract class Allotjament implements InAllotjament {
     private String nom;
     private String id;
     private boolean estat;         // true = operatiu, false = no operatiu
-    private int illuminacio;       // percentatge (0, 50, 100)
+    private String illuminacio;       // percentatge (0, 50, 100)
     private long estadaMinimaBAIXA;
     private long estadaMinimaALTA;
 
-    public Allotjament(String nom, String id, boolean estat, int illuminacio,
+    public Allotjament(String nom, String id, boolean estat, String illuminacio,
                        long estadaMinimaBAIXA, long estadaMinimaALTA) {
         this.nom = nom;
         this.id = id;
@@ -27,7 +27,7 @@ public abstract class Allotjament implements InAllotjament {
     public boolean isOperatiu() { return estat; }
     public void setEstat(boolean estat) { this.estat = estat; }
     public String getIluminacio() { return illuminacio + "%"; }
-    public void setIlluminacio(int illuminacio) { this.illuminacio = illuminacio; }
+    public void setIlluminacio(String illuminacio) { this.illuminacio = illuminacio; }
     public long getEstadaMinima(Temp temp) {
         return (temp == Temp.ALTA) ? estadaMinimaALTA : estadaMinimaBAIXA;
     }
@@ -41,7 +41,7 @@ public abstract class Allotjament implements InAllotjament {
 
     public void obrirAllotjament() {
         estat = true;
-        illuminacio = 100;
+        illuminacio = "100%";
     }
 
     @Override

@@ -93,12 +93,12 @@ public class Camping implements InCamping {
     catch (ExcepcioCamping e) { System.err.println(e.getMessage()); }
 
     // Allotjaments (amb String per mida)
-    Allotjament ALL1 = new Parcela("Parcel·la Nord", "ALL1", true, 100, 64.0f, true);
-    Allotjament ALL2 = new Parcela("Parcel·la Sud", "ALL2", true, 100, 64.0f, true);
-    Allotjament ALL3 = new Bungalow("Bungalow Nord", "ALL3", true, 100, "22", 2, 4, 1, true, true, true);
-    Allotjament ALL4 = new BungalowPremium("Bungalow Sud", "ALL4", true, 100, "27", 2, 6, 1, true, true, true, true, "CampingDelMarBP1");
-    Allotjament ALL5 = new Glamping("Glamping Nord", "ALL5", true, 100, "20", 1, 2, "Tela", true);
-    Allotjament ALL6 = new MobilHome("Mobil·Home Sud", "ALL6", true, 100, "22", 2, 4, true);
+    Allotjament ALL1 = new Parcela("Parcel·la Nord", "ALL1", true, "100%", 64.0f, true);
+    Allotjament ALL2 = new Parcela("Parcel·la Sud", "ALL2", true, "100%", 64.0f, true);
+    Allotjament ALL3 = new Bungalow("Bungalow Nord", "ALL3", true, "100%", "22", 2, 4, 1, true, true, true);
+    Allotjament ALL4 = new BungalowPremium("Bungalow Sud", "ALL4", true, "100%", "27", 2, 6, 1, true, true, true, true, "CampingDelMarBP1");
+    Allotjament ALL5 = new Glamping("Glamping Nord", "ALL5", true, "100%", "20", 1, 2, "Tela", true);
+    Allotjament ALL6 = new MobilHome("Mobil·Home Sud", "ALL6", true, "100%", "22", 2, 4, true);
 
     try {
         llistaAllotjaments.afegirAllotjament(ALL1);

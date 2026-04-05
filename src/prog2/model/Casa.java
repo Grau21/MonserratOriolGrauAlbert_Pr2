@@ -24,7 +24,7 @@ public abstract class Casa extends Allotjament {
      * @param estadaMinimaALTA_
      * @param estadaMinimaBAIXA_
      */
-    public Casa(String nom, String id, boolean estat, int illuminacio,
+    public Casa(String nom, String id, boolean estat, String illuminacio,
                 String mida, int habitacions, int placesPersones,
                 long estadaMinimaBAIXA_, long estadaMinimaALTA_) {
         super(nom, id, estat, illuminacio, estadaMinimaBAIXA_, estadaMinimaALTA_);

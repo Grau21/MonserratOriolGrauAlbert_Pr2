@@ -23,7 +23,7 @@ public class Glamping extends Casa {
      * @param material
      * @param casaMascota
      */
-    public Glamping(String nom, String id, boolean estat, int illuminacio,
+    public Glamping(String nom, String id, boolean estat, String illuminacio,
                     String mida, int habitacions, int placesPersones,
                     String material, boolean casaMascota) {
         super(
