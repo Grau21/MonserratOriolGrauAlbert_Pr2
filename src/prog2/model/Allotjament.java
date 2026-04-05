@@ -24,8 +24,9 @@ public abstract class Allotjament implements InAllotjament {
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
     public boolean isEstat() { return estat; }
+    public boolean isOperatiu() { return estat; }
     public void setEstat(boolean estat) { this.estat = estat; }
-    public int getIlluminacio() { return illuminacio; }
+    public String getIluminacio() { return illuminacio + "%"; }
     public void setIlluminacio(int illuminacio) { this.illuminacio = illuminacio; }
     public long getEstadaMinima(Temp temp) {
         return (temp == Temp.ALTA) ? estadaMinimaALTA : estadaMinimaBAIXA;
