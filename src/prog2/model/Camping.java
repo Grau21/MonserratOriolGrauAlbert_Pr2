@@ -106,6 +106,23 @@ public class Camping implements InCamping {
         Client client = buscarClient(dni_);
         llistaReserves.afegirReserva(allotjament, client, dataEntrada, dataSortida);
     }
+
+    private Allotjament buscarAllotjament(String id) throws ExcepcioReserva {
+        ArrayList<Allotjament> llista = llistaAllotjaments.getLlistaAllotjaments();
+
+        for (Allotjament a : llista) {
+            if (a.getId().equals(id)) return a;
+        }
+        throw new ExcepcioReserva("Allotjament amb id " + id + " no trobat");
+    }
+
+    private Client buscarClient(String dni) throws ExcepcioReserva {
+        for (Client c : llistaClients) {
+            if (c.getDni().equals(dni)) return c;
+        }
+        throw new ExcepcioReserva("Client amb DNI " + dni + " no trobat");
+    }
+
     /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     @Override
