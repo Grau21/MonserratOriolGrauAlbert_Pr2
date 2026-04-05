@@ -8,6 +8,7 @@ public class Camping implements InCamping {
     private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
     private LlistaTasquesManteniment llistaTasquesManteniment;
+    private LlistaReserves llistaReserves;
 
     public Camping(String nom) {
         this.nom = nom;
@@ -17,7 +18,13 @@ public class Camping implements InCamping {
     }
 
     // Getters
+    @Override
     public String getNom() { return nom; }
+    @Override
+    public LlistaReserves getLlistaReserves() {
+        return llistaReserves;
+    }
+    @Override
     public LlistaAllotjaments getLlistaAllotjaments() { return llistaAllotjaments; }
     public LlistaAccessos getLlistaAccessos() { return llistaAccessos; }
     public LlistaTasquesManteniment getLlistaTasquesManteniment() { return llistaTasquesManteniment; }
@@ -57,30 +64,33 @@ public class Camping implements InCamping {
     llistaAllotjaments.buidar();
 
     // Accessos (idèntic al teu, però amb els constructors correctes)
-    Acces Acc1 = new CamiAsfaltat("A1", true, 200);
-    llistaAccessos.afegirAcces(Acc1);
-    Acces Acc2 = new CarreteraAsfaltada("A2", true, 800, 10000);
-    llistaAccessos.afegirAcces(Acc2);
-    Acces Acc3 = new CamiTerra("A3", true, 100);
-    llistaAccessos.afegirAcces(Acc3);
-    Acces Acc4 = new CarreteraTerra("A4", true, 200, 3);
-    llistaAccessos.afegirAcces(Acc4);
-    Acces Acc5 = new CamiAsfaltat("A5", true, 350);
-    llistaAccessos.afegirAcces(Acc5);
-    Acces Acc6 = new CarreteraAsfaltada("A6", true, 800, 12000);
-    llistaAccessos.afegirAcces(Acc6);
-    Acces Acc7 = new CamiAsfaltat("A7", true, 100);
-    llistaAccessos.afegirAcces(Acc7);
-    Acces Acc8 = new CarreteraAsfaltada("A8", true, 800, 10000);
-    llistaAccessos.afegirAcces(Acc8);
-    Acces Acc9 = new CamiTerra("A9", true, 50);
-    llistaAccessos.afegirAcces(Acc9);
-    Acces Acc10 = new CarreteraTerra("A10", true, 400, 4);
-    llistaAccessos.afegirAcces(Acc10);
-    Acces Acc11 = new CamiTerra("A11", true, 80);
-    llistaAccessos.afegirAcces(Acc11);
-    Acces Acc12 = new CarreteraTerra("A12", true, 800, 5);
-    llistaAccessos.afegirAcces(Acc12);
+    try {
+        Acces Acc1 = new CamiAsfaltat("A1", true, 200);
+        llistaAccessos.afegirAcces(Acc1);
+        Acces Acc2 = new CarreteraAsfaltada("A2", true, 800, 10000);
+        llistaAccessos.afegirAcces(Acc2);
+        Acces Acc3 = new CamiTerra("A3", true, 100);
+        llistaAccessos.afegirAcces(Acc3);
+        Acces Acc4 = new CarreteraTerra("A4", true, 200, 3);
+        llistaAccessos.afegirAcces(Acc4);
+        Acces Acc5 = new CamiAsfaltat("A5", true, 350);
+        llistaAccessos.afegirAcces(Acc5);
+        Acces Acc6 = new CarreteraAsfaltada("A6", true, 800, 12000);
+        llistaAccessos.afegirAcces(Acc6);
+        Acces Acc7 = new CamiAsfaltat("A7", true, 100);
+        llistaAccessos.afegirAcces(Acc7);
+        Acces Acc8 = new CarreteraAsfaltada("A8", true, 800, 10000);
+        llistaAccessos.afegirAcces(Acc8);
+        Acces Acc9 = new CamiTerra("A9", true, 50);
+        llistaAccessos.afegirAcces(Acc9);
+        Acces Acc10 = new CarreteraTerra("A10", true, 400, 4);
+        llistaAccessos.afegirAcces(Acc10);
+        Acces Acc11 = new CamiTerra("A11", true, 80);
+        llistaAccessos.afegirAcces(Acc11);
+        Acces Acc12 = new CarreteraTerra("A12", true, 800, 5);
+        llistaAccessos.afegirAcces(Acc12);
+    }
+    catch (ExcepcioCamping e) { System.err.println(e.getMessage()); }
 
     // Allotjaments (amb String per mida)
     Allotjament ALL1 = new Parcela("Parcel·la Nord", "ALL1", true, 100, 64.0f, true);
@@ -90,12 +100,17 @@ public class Camping implements InCamping {
     Allotjament ALL5 = new Glamping("Glamping Nord", "ALL5", true, 100, "20", 1, 2, "Tela", true);
     Allotjament ALL6 = new MobilHome("Mobil·Home Sud", "ALL6", true, 100, "22", 2, 4, true);
 
-    llistaAllotjaments.afegirAllotjament(ALL1);
-    llistaAllotjaments.afegirAllotjament(ALL2);
-    llistaAllotjaments.afegirAllotjament(ALL3);
-    llistaAllotjaments.afegirAllotjament(ALL4);
-    llistaAllotjaments.afegirAllotjament(ALL5);
-    llistaAllotjaments.afegirAllotjament(ALL6);
+    try {
+        llistaAllotjaments.afegirAllotjament(ALL1);
+        llistaAllotjaments.afegirAllotjament(ALL2);
+        llistaAllotjaments.afegirAllotjament(ALL3);
+        llistaAllotjaments.afegirAllotjament(ALL4);
+        llistaAllotjaments.afegirAllotjament(ALL5);
+        llistaAllotjaments.afegirAllotjament(ALL6);
+    }
+    catch (ExcepcioCamping e) {
+        System.err.println(e.getMessage());
+    }
 
     // Assignar accessos
     Acc1.afegirAllotjament(ALL1); Acc1.afegirAllotjament(ALL2);

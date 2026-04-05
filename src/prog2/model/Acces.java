@@ -1,5 +1,7 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 public abstract class Acces implements InAcces {
     private String nom;
     private boolean estat;
@@ -11,9 +13,10 @@ public abstract class Acces implements InAcces {
         this.allotjaments = new LlistaAllotjaments();  // inicialització important
     }
 
-    public void afegirAllotjament(Allotjament allotjament) {
-        try { allotjaments.afegirAllotjament(allotjament); } catch (Exception e) {}
+    public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
+        allotjaments.afegirAllotjament(allotjament);
     }
+
     public void tancarAcces() { estat = false; }
     public void obrirAcces() { estat = true; }
     public String getNom() { return nom; }
