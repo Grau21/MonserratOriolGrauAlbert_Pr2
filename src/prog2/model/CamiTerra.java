@@ -1,23 +1,17 @@
 package prog2.model;
 
-public class CamiTerra extends AccesTerra {
-    private boolean accesibilitat;
-
-    /**
-     * Constructor per defecte de la classe.,
-     *
-     * @param nom
-     * @param estat
-     * @param longitud
-     */
-    CamiTerra(String nom, boolean estat, double longitud) {
-        super(nom, estat, longitud);
-        accesibilitat = false;
+public class CarreteraAsfaltada extends AccesAsfalt {
+    private double pesMaxim;
+    public CarreteraAsfaltada(String nom, boolean estat, double metresQuadratsAsfalt, double pesMaxim) {
+        super(nom, estat, metresQuadratsAsfalt);
+        this.pesMaxim = pesMaxim;
     }
-
-    /**
-     * Retorna si l'accés permet accessibilitat amb cotxe o no.
-     * @return
-     */
-    public boolean isAccessibilitat() { return accesibilitat; }
+    @Override
+    public boolean isAccessibilitat() { return true; }
+    public double getPesMaxim() { return pesMaxim; }
+    public void setPesMaxim(double pesMaxim) { this.pesMaxim = pesMaxim; }
+    @Override
+    public String toString() {
+        return super.toString() + ", pes màxim=" + pesMaxim + " kg (Carretera asfaltada)";
+    }
 }
