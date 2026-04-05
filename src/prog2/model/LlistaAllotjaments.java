@@ -1,86 +1,59 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
-
 import java.util.ArrayList;
 
 public class LlistaAllotjaments implements InLlistaAllotjaments {
+    private ArrayList<Allotjament> llista;
 
-    // Atributs
-    //------------
-
-    private ArrayList<Allotjament> allotjamentsLlista;
-
-    // Constructors
-    //---------------
-
-    /**
-     * Constructor per defecte de la classe.
-     */
-    public LlistaAllotjaments() { allotjamentsLlista = new ArrayList<>(); }
-
-    // Getters i Setters.
-    //---------------------
-
-    /**
-     * Retorna la llista d'allotjaments.
-     * @return ArrayList<Allotjament>
-     */
-    public ArrayList<Allotjament> getAllotjamentsLlista() { return allotjamentsLlista; }
-
-    /**
-     * Canvia la llista d'allotjaments.
-     * @param allotjamentsLlista_
-     */
-    public void setAllotjamentsLlista(ArrayList<Allotjament> allotjamentsLlista_) {
-        allotjamentsLlista = allotjamentsLlista_;
+    public LlistaAllotjaments() {
+        llista = new ArrayList<>();
     }
 
-    // Mètodes
-    //---------
-
-    /**
-     * Afegeix un allotjament rebut per paràmetre a la llista d'allotjaments.
-     * @param allotjament Objecte de tipus Allotjament
-     * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
-     */
+    @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
-
+        if (allotjament == null) throw new ExcepcioCamping("Allotjament nul");
+        llista.add(allotjament);
     }
 
-    /**
-     * Buida la llista d'allotjaments.
-     */
-    public void buidar();
+    @Override
+    public void buidar() {
+        llista.clear();
+    }
 
-    /**
-     * Itera sobre la llista d'allotjaments i retorna un String amb la informació de tots els allotjaments amb l'estat rebut per paràmetre.
-     * En cas que no hi hagi allotjaments en l'estat passat com a paràmetre llança una excepció.
-     * @param estat
-     * @return String
-     * @throws prog2.vista.ExcepcioCamping Aquest mètode llança una excepció en cas que no hi hagi allotjaments en l'estat passat com a paràmetre.
-     */
-    public String llistarAllotjaments(String estat) throws ExcepcioCamping;
+    @Override
+    public String llistarAllotjaments(String estat) throws ExcepcioCamping {
+        boolean operatiu = estat.equalsIgnoreCase("Operatiu");
+        StringBuilder sb = new StringBuilder();
+        boolean trobat = false;
+        for (Allotjament a : llista) {
+            if (a.isEstat() == operatiu) {
+                sb.append(a.toString()).append("\n");
+                trobat = true;
+            }
+        }
+        if (!trobat) throw new ExcepcioCamping("No hi ha allotjaments en estat " + estat);
+        return sb.toString();
+    }
 
-    /**
-     * Mira si la llista d'allotjaments conté algun allotjament operatiu.
-     * @return boolean
-     */
-    public boolean containsAllotjamentOperatiu();
+    @Override
+    public boolean containsAllotjamentOperatiu() {
+        for (Allotjament a : llista) {
+            if (a.isEstat()) return true;
+        }
+        return false;
+    }
 
-    /**
-     * Mira si la llista d'allotjaments conté l'allotjament rebut per paràmetre i retorna un booleà amb la informació.
-     * @param allotjament
-     * @return boolean
-     */
+    @Override
+    public boolean contains(Allotjament allotjament) {
+        return llista.contains(allotjament);
+    }
 
-    public boolean contains(Allotjament allotjament);
-
-    /**
-     * Busca l'allotjament amb el nom rebut per paràmetre i el retorna. En cas que no existeixi llança una excepció.
-     * @param id String amb el id de l'allotjament
-     * @return  Objecte de tipus Allotjament
-     * @throws prog2.vista.ExcepcioCamping Aquest mètode podria llançar una excepció si fos necessari.
-     */
-    public Allotjament getAllotjament(String id) throws ExcepcioCamping;
+    @Override
+    public Allotjament getAllotjament(String id) throws ExcepcioCamping {
+        for (Allotjament a : llista) {
+            if (a.getId().equals(id)) return a;
+        }
+        throw new ExcepcioCamping("Allotjament amb id " + id + " no trobat");
+    }
 }
