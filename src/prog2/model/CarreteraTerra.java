@@ -1,13 +1,17 @@
 package prog2.model;
 
-public class CamiTerra extends AccesTerra {
-    public CamiTerra(String nom, boolean estat, double longitud) {
+public class CarreteraTerra extends AccesTerra {
+    private double amplada;
+    public CarreteraTerra(String nom, boolean estat, double longitud, double amplada) {
         super(nom, estat, longitud);
+        this.amplada = amplada;
     }
     @Override
-    public boolean isAccessibilitat() { return false; }
+    public boolean isAccessibilitat() { return true; }
+    public double getAmplada() { return amplada; }
+    public void setAmplada(double amplada) { this.amplada = amplada; }
     @Override
     public String toString() {
-        return super.toString() + " (Camí de terra)";
+        return super.toString() + ", amplada=" + amplada + " m (Carretera de terra)";
     }
 }
